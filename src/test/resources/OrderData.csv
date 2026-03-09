@@ -1,0 +1,5 @@
+name,amount,isPositive
+scissors,1,true
+hammer,0,false
+chainsaw,5,true
+screwdriver,-1,false
