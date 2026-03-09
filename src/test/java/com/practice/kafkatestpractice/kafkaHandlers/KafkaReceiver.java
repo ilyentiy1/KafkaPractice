@@ -33,17 +33,11 @@ public class KafkaReceiver {
     }
 
     public OrderEvent getNextCreatedEvent() throws InterruptedException {
-        return ordersCreatedQueue.poll(800, TimeUnit.MILLISECONDS);
+        return ordersCreatedQueue.poll(10, TimeUnit.SECONDS);
     }
 
     public OrderProcessedEvent getNextProcessedEvent() throws InterruptedException {
-        return ordersProcessedQueue.poll(800, TimeUnit.MILLISECONDS);
+        return ordersProcessedQueue.poll(10, TimeUnit.SECONDS);
     }
-
-    public void clearAll() {
-        ordersCreatedQueue.clear();
-        ordersProcessedQueue.clear();
-    }
-
 
 }

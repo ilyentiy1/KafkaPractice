@@ -9,7 +9,6 @@ import com.practice.kafkatestpractice.kafkaHandlers.KafkaSender;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ssl.DefaultSslBundleRegistry;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 
@@ -24,8 +23,6 @@ class KafkaTestPracticeApplicationTests {
     private KafkaSender kafkaSender;
     @Autowired
     private KafkaReceiver kafkaReceiver;
-    @Autowired
-    private DefaultSslBundleRegistry defaultSslBundleRegistry;
 
     @ParameterizedTest
     @MethodSource("com.practice.kafkatestpractice.utils.CsvDataProvider#getOrderData")
@@ -60,8 +57,5 @@ class KafkaTestPracticeApplicationTests {
                     receivedOrderProcessedEvent.getStatus()
             );
         }
-
-
-
     }
 }
