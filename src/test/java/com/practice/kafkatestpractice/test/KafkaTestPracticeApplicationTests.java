@@ -6,7 +6,7 @@ import com.practice.kafkatestpractice.events.OrderProcessedEvent;
 import com.practice.kafkatestpractice.events.ProcessedEventType;
 import com.practice.kafkatestpractice.kafkaHandlers.KafkaReceiver;
 import com.practice.kafkatestpractice.kafkaHandlers.KafkaSender;
-import io.qameta.allure.Description;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ class KafkaTestPracticeApplicationTests {
 
     @ParameterizedTest(name = "товар: {0}, кол-во: {1}, позитивный тест: {2}")
     @MethodSource("com.practice.kafkatestpractice.utils.CsvDataProvider#getOrderData")
-    @Description("Тестирование Kafka")
+    @DisplayName("Тестирование кафки")
     void pubSubTest(String name, int amount, boolean isPositive) throws InterruptedException {
 
         OrderEvent orderEvent = OrderEvent.createNewOrderEvent(name, amount);
