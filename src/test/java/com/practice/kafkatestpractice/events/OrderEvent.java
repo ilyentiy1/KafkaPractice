@@ -18,6 +18,7 @@ public class OrderEvent {
     private LocalDateTime timestamp;
     private Order order;
 
+
     public static OrderEvent createNewOrderEvent(String name, int amount) {
         return new OrderEvent(
                 UUID.randomUUID().toString().substring(0,6),

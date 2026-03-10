@@ -15,6 +15,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class OrderProcessedEvent {
     private String eventId;
+    private String correlationId;
     private ProcessedEventType status;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime timestamp;
@@ -23,8 +24,11 @@ public class OrderProcessedEvent {
     public static OrderProcessedEvent createNewProcessedOrderEvent(OrderEvent event) {
         return new OrderProcessedEvent(
                 UUID.randomUUID().toString().substring(0,6),
+                event.getEventId(),
                 //Обработка условия из ТЗ amount > 0
-                event.getOrder().getAmount() > 0 ? ProcessedEventType.ACCEPTED:ProcessedEventType.REJECTED,
+                event.getOrder().getAmount() > 0
+                        ? ProcessedEventType.ACCEPTED
+                        : ProcessedEventType.REJECTED,
                 LocalDateTime.now(),
                 event.getOrder()
         );
